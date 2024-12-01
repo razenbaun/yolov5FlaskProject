@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Classes</title>
+</head>
+<body>
+    <h1>Выбрать классы</h1>
+    <form action="/filter" method="post">
+        <input type="hidden" name="image_path" value="{{ image_path }}">
+        {% for cls in classes %}
+            <div>
+                <label>
+                    <input type="checkbox" name="classes" value="{{ cls }}" checked> {{ cls }}
+                </label>
+            </div>
+        {% endfor %}
+        <label>
+            Confidence Threshold: <input type="number" name="confidence" step="0.1" min="0" max="1" value="0.5">
+        </label>
+        <button type="submit">применить</button>
+    </form>
+</body>
+</html>
